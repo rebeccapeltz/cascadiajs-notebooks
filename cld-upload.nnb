@@ -1,0 +1,256 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "## Upload an Image and Cloudinary will assign a random id"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Upload an Image from the Web\n\nDon't supply any parameters.  Cloudinary will assign a random string of 20 characters.  \nYou will see a standard response."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "require('dotenv').config();\nconsole.log(cloudinary.config().cloud_name)\ncloudinary.uploader.upload(\"https://upload.wikimedia.org/wikipedia/commons/5/56/Chocolate_cupcakes.jpg\",{})\n    .then(result => { \n        console.log(result); \n        // console.log(\"Length of public id\",result.public_id.length);\n     })\n    .catch(error => { console.log(error) });"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "picturecloud7",
+                                "{",
+                                "  asset_id: 'fe45d5b076ce6833e81f0d0ed594da77',",
+                                "  public_id: 'po5iduwr3kmlvntskdhm',",
+                                "  version: 1657061791,",
+                                "  version_id: '70dd42ebdba66f9b1ce3b8c0fa7d95e8',",
+                                "  signature: '669cefd4bf6583fb83742ad0cf72f1cbe768628c',",
+                                "  width: 700,",
+                                "  height: 456,",
+                                "  format: 'jpg',",
+                                "  resource_type: 'image',",
+                                "  created_at: '2022-07-05T22:56:31Z',",
+                                "  tags: [],",
+                                "  bytes: 246958,",
+                                "  type: 'upload',",
+                                "  etag: '78ef208b59d8277be9f12ec53c9a5224',",
+                                "  placeholder: false,",
+                                "  url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657061791/po5iduwr3kmlvntskdhm.jpg',",
+                                "  secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657061791/po5iduwr3kmlvntskdhm.jpg',",
+                                "  access_mode: 'public',",
+                                "  original_filename: 'Chocolate_cupcakes',",
+                                "  api_key: '631476671131724'",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Upload and assign public ID\nOpen the Secure URL that you see in the response.  This will cache this image."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "\n\ncloudinary.uploader.upload(\"https://upload.wikimedia.org/wikipedia/commons/5/56/Chocolate_cupcakes.jpg\",\n    {\n        public_id: \"cupcakes\"\n    })\n    .then(result => { console.log(result) })\n    .catch(error => { console.log(error) });"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  asset_id: '5d47f4109df08a081966d77df9fa51a3',",
+                                "  public_id: 'cupcakes',",
+                                "  version: 1653881114,",
+                                "  version_id: '5c8d6f233e4d52177de1d0fc43e1d2a2',",
+                                "  signature: '933bbb1db1ef4fcc5e0a7d6455beb34c67442b49',",
+                                "  width: 700,",
+                                "  height: 456,",
+                                "  format: 'jpg',",
+                                "  resource_type: 'image',",
+                                "  created_at: '2022-05-30T03:25:14Z',",
+                                "  tags: [],",
+                                "  bytes: 246958,",
+                                "  type: 'upload',",
+                                "  etag: '78ef208b59d8277be9f12ec53c9a5224',",
+                                "  placeholder: false,",
+                                "  url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1653881114/cupcakes.jpg',",
+                                "  secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1653881114/cupcakes.jpg',",
+                                "  access_mode: 'public',",
+                                "  overwritten: true,",
+                                "  original_filename: 'Chocolate_cupcakes',",
+                                "  api_key: '631476671131724'",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Upload and Use the Original Filename\n\nIndicate that the filename does not need to be unique.  This will override any assets with the filename already used as a public id."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "cloudinary.uploader.upload(\"https://upload.wikimedia.org/wikipedia/commons/5/56/Chocolate_cupcakes.jpg\",\n    {\n        use_filename: true, \n        unique_filename: false\n    })\n    .then(result => { console.log(result) })\n    .catch(error => { console.log(error) });"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  asset_id: 'e1dd7e1dd83bfc7a9be6dee6c7201da0',",
+                                "  public_id: 'Chocolate_cupcakes',",
+                                "  version: 1657062034,",
+                                "  version_id: '09ea0d033340f6a420abeb710e855102',",
+                                "  signature: '31990384a6753eca84898e8463a0c23c86f098b8',",
+                                "  width: 700,",
+                                "  height: 456,",
+                                "  format: 'jpg',",
+                                "  resource_type: 'image',",
+                                "  created_at: '2022-07-05T23:00:34Z',",
+                                "  tags: [],",
+                                "  bytes: 246958,",
+                                "  type: 'upload',",
+                                "  etag: '78ef208b59d8277be9f12ec53c9a5224',",
+                                "  placeholder: false,",
+                                "  url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657062034/Chocolate_cupcakes.jpg',",
+                                "  secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657062034/Chocolate_cupcakes.jpg',",
+                                "  access_mode: 'public',",
+                                "  original_filename: 'Chocolate_cupcakes',",
+                                "  api_key: '631476671131724'",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Upload and Use the Original Filename \n\nIn this case indicate that the filename should be unique.  This will prevent the upload from overwriting an existing asset whose public id \nmatches the filename that you are uploading.  You should see `_xxxxxx` and underscore followed by 6 random characters."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "cloudinary.uploader.upload(\"https://upload.wikimedia.org/wikipedia/commons/5/56/Chocolate_cupcakes.jpg\",\n    {\n        use_filename: true, \n        unique_filename: true\n    })\n    .then(result => { console.log(result) })\n    .catch(error => { console.log(error) });"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  asset_id: '87af6e57e10a0dda17741a7e0603aa10',",
+                                "  public_id: 'Chocolate_cupcakes_mgflb6',",
+                                "  version: 1657062177,",
+                                "  version_id: '53c95b3be5d101d2771570ce692e7bec',",
+                                "  signature: '3624d23515c49a699d34bceed23a53ffafd2d658',",
+                                "  width: 700,",
+                                "  height: 456,",
+                                "  format: 'jpg',",
+                                "  resource_type: 'image',",
+                                "  created_at: '2022-07-05T23:02:57Z',",
+                                "  tags: [],",
+                                "  bytes: 246958,",
+                                "  type: 'upload',",
+                                "  etag: '78ef208b59d8277be9f12ec53c9a5224',",
+                                "  placeholder: false,",
+                                "  url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657062177/Chocolate_cupcakes_mgflb6.jpg',",
+                                "  secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657062177/Chocolate_cupcakes_mgflb6.jpg',",
+                                "  access_mode: 'public',",
+                                "  original_filename: 'Chocolate_cupcakes',",
+                                "  api_key: '631476671131724'",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Upload and Use a Public ID Already in Use\n\nUse the public id \"cupcakes\" that you used above.  Upload a different image.  Add options to overwrite and invalidate.  The image should get replaced and invalidated on the cache.  Open this image using the secure URL in the response.  What color are the cupcakes?\n\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "cloudinary.uploader.upload(\"https://cdn.pixabay.com/photo/2016/01/11/07/18/cupcakes-1133146_1280.jpg\",\n    {\n        public_id: \"cupcakes\",\n        overwrite: true,\n        invalidate: true\n    })\n    .then(result => { console.log(result) })\n    .catch(error => { console.log(error) });"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  asset_id: '5d47f4109df08a081966d77df9fa51a3',",
+                                "  public_id: 'cupcakes',",
+                                "  version: 1657062511,",
+                                "  version_id: '58d66c2f97c5db4cfbbb201cb7533e51',",
+                                "  signature: '7e92868aa2bb39d03a6779c914ee0724a51c5772',",
+                                "  width: 1280,",
+                                "  height: 960,",
+                                "  format: 'jpg',",
+                                "  resource_type: 'image',",
+                                "  created_at: '2022-05-30T03:25:14Z',",
+                                "  tags: [],",
+                                "  bytes: 157614,",
+                                "  type: 'upload',",
+                                "  etag: 'b3c7f76703e2dc6b5a30245183e7f8b7',",
+                                "  placeholder: false,",
+                                "  url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657062511/cupcakes.jpg',",
+                                "  secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657062511/cupcakes.jpg',",
+                                "  access_mode: 'public',",
+                                "  overwritten: true,",
+                                "  original_filename: 'cupcakes-1133146_1280',",
+                                "  api_key: '631476671131724'",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Hint: the cupcakes should be green\n\n<img src=\"https://res.cloudinary.com/picturecloud7/image/upload/v1657062511/cupcakes.jpg\" width=\"400\" alt=\"green cupcakes\">"
+            ],
+            "outputs": []
+        }
+    ]
+}
