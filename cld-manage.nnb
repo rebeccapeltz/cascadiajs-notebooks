@@ -1,0 +1,677 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "# Cloudinary Manage Assets"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## List Assets\n\nIf you don't specify a `max_result` option, you will only get up to 10 results.  They will be the most recently uploaded.\nYou will use the \"Admin\" API, `cloudinary.api` for this.  The notebook will only display 1 entry, but you can see the informations returned.\nYou will be given a link to open the full output in a text editor."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "require('dotenv').config();\ncloudinary.api.resources()\n\t.then(result => { console.log(result) })\n\t.catch(error => { console.log(error) });"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  resources: [",
+                                "    {",
+                                "      asset_id: '87af6e57e10a0dda17741a7e0603aa10',",
+                                "      public_id: 'Chocolate_cupcakes_mgflb6',",
+                                "      format: 'jpg',",
+                                "      version: 1657062177,",
+                                "      resource_type: 'image',",
+                                "      type: 'upload',",
+                                "      created_at: '2022-07-05T23:02:57Z',",
+                                "      bytes: 246958,",
+                                "      width: 700,",
+                                "      height: 456,",
+                                "      backup: true,",
+                                "      folder: '',",
+                                "      access_mode: 'public',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657062177/Chocolate_cupcakes_mgflb6.jpg',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657062177/Chocolate_cupcakes_mgflb6.jpg'",
+                                "    },",
+                                "    {",
+                                "      asset_id: 'e1dd7e1dd83bfc7a9be6dee6c7201da0',",
+                                "      public_id: 'Chocolate_cupcakes',",
+                                "      format: 'jpg',",
+                                "      version: 1657062034,",
+                                "      resource_type: 'image',",
+                                "      type: 'upload',",
+                                "      created_at: '2022-07-05T23:00:34Z',",
+                                "      bytes: 246958,",
+                                "      width: 700,",
+                                "      height: 456,",
+                                "      backup: true,",
+                                "      folder: '',",
+                                "      access_mode: 'public',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657062034/Chocolate_cupcakes.jpg',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657062034/Chocolate_cupcakes.jpg'",
+                                "    },",
+                                "    {",
+                                "      asset_id: 'fe45d5b076ce6833e81f0d0ed594da77',",
+                                "      public_id: 'po5iduwr3kmlvntskdhm',",
+                                "      format: 'jpg',",
+                                "      version: 1657061791,",
+                                "      resource_type: 'image',",
+                                "      type: 'upload',",
+                                "      created_at: '2022-07-05T22:56:31Z',",
+                                "      bytes: 246958,",
+                                "      width: 700,",
+                                "      height: 456,",
+                                "      backup: true,",
+                                "      folder: '',",
+                                "      access_mode: 'public',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657061791/po5iduwr3kmlvntskdhm.jpg',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657061791/po5iduwr3kmlvntskdhm.jpg'",
+                                "    },",
+                                "    {",
+                                "      asset_id: '8b4036e1a401ac54fd97070512f5afd3',",
+                                "      public_id: 'roreonetzq2osuffv6yy',",
+                                "      format: 'jpg',",
+                                "      version: 1657061779,",
+                                "      resource_type: 'image',",
+                                "      type: 'upload',",
+                                "      created_at: '2022-07-05T22:56:19Z',",
+                                "      bytes: 246958,",
+                                "      width: 700,",
+                                "      height: 456,",
+                                "      backup: true,",
+                                "      folder: '',",
+                                "      access_mode: 'public',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657061779/roreonetzq2osuffv6yy.jpg',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657061779/roreonetzq2osuffv6yy.jpg'",
+                                "    },",
+                                "    {",
+                                "      asset_id: '76e4bce79e3fef19375ee3d989628685',",
+                                "      public_id: 'thuqg9ke5thxu2vromwq',",
+                                "      format: 'jpg',",
+                                "      version: 1657061750,",
+                                "      resource_type: 'image',",
+                                "      type: 'upload',",
+                                "      created_at: '2022-07-05T22:55:50Z',",
+                                "      bytes: 246958,",
+                                "      width: 700,",
+                                "      height: 456,",
+                                "      backup: true,",
+                                "      folder: '',",
+                                "      access_mode: 'public',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657061750/thuqg9ke5thxu2vromwq.jpg',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657061750/thuqg9ke5thxu2vromwq.jpg'",
+                                "    },",
+                                "    {",
+                                "      asset_id: '7b013ab4dc79627420f79a31b1f91bfc',",
+                                "      public_id: 'yqdmq9mgwalb8fyv6xim',",
+                                "      format: 'jpg',",
+                                "      version: 1657061736,",
+                                "      resource_type: 'image',",
+                                "      type: 'upload',",
+                                "      created_at: '2022-07-05T22:55:36Z',",
+                                "      bytes: 246958,",
+                                "      width: 700,",
+                                "      height: 456,",
+                                "      backup: true,",
+                                "      folder: '',",
+                                "      access_mode: 'public',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657061736/yqdmq9mgwalb8fyv6xim.jpg',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657061736/yqdmq9mgwalb8fyv6xim.jpg'",
+                                "    },",
+                                "    {",
+                                "      asset_id: 'ddd6fbfa9d95a5ceaa34bb7a7660a3fd',",
+                                "      public_id: 'n7mdnvsdkmg6e2h5aq1g',",
+                                "      format: 'jpg',",
+                                "      version: 1657061699,",
+                                "      resource_type: 'image',",
+                                "      type: 'upload',",
+                                "      created_at: '2022-07-05T22:54:59Z',",
+                                "      bytes: 246958,",
+                                "      width: 700,",
+                                "      height: 456,",
+                                "      backup: true,",
+                                "      folder: '',",
+                                "      access_mode: 'public',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657061699/n7mdnvsdkmg6e2h5aq1g.jpg',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657061699/n7mdnvsdkmg6e2h5aq1g.jpg'",
+                                "    },",
+                                "    {",
+                                "      asset_id: 'b88fd72e0cdd7e1d539d7b90654c05a7',",
+                                "      public_id: 'p4xpkto6rbcigywxxwiu',",
+                                "      format: 'jpg',",
+                                "      version: 1657061678,",
+                                "      resource_type: 'image',",
+                                "      type: 'upload',",
+                                "      created_at: '2022-07-05T22:54:38Z',",
+                                "      bytes: 246958,",
+                                "      width: 700,",
+                                "      height: 456,",
+                                "      backup: true,",
+                                "      folder: '',",
+                                "      access_mode: 'public',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657061678/p4xpkto6rbcigywxxwiu.jpg',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657061678/p4xpkto6rbcigywxxwiu.jpg'",
+                                "    },",
+                                "    {",
+                                "      asset_id: 'f1c72940b4447c3581b33b2a20750295',",
+                                "      public_id: 'ot36nkogzztmf6w8bk8g',",
+                                "      format: 'jpg',",
+                                "      version: 1657061671,",
+                                "      resource_type: 'image',",
+                                "      type: 'upload',",
+                                "      created_at: '2022-07-05T22:54:31Z',",
+                                "      bytes: 246958,",
+                                "      width: 700,",
+                                "      height: 456,",
+                                "      backup: true,",
+                                "      folder: '',",
+                                "      access_mode: 'public',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657061671/ot36nkogzztmf6w8bk8g.jpg',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657061671/ot36nkogzztmf6w8bk8g.jpg'",
+                                "    },",
+                                "    {",
+                                "      asset_id: 'a325f2678bf676911e793638abd43ab1',",
+                                "      public_id: 'aiunkbyzcg6dtnwzerm5',",
+                                "      format: 'jpg',",
+                                "      version: 1657061631,",
+                                "      resource_type: 'image',",
+                                "      type: 'upload',",
+                                "      created_at: '2022-07-05T22:53:51Z',",
+                                "      bytes: 246958,",
+                                "      width: 700,",
+                                "      height: 456,",
+                                "      backup: true,",
+                                "      folder: '',",
+                                "      access_mode: 'public',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657061631/aiunkbyzcg6dtnwzerm5.jpg',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657061631/aiunkbyzcg6dtnwzerm5.jpg'",
+                                "    }",
+                                "  ],",
+                                "  next_cursor: '6bf7abbf6ba4081b84f781d745aaa9be220ace1dfafaacd1da46ff55d712a471',",
+                                "  rate_limit_allowed: 500,",
+                                "  rate_limit_reset_at: 2022-07-07T02:00:00.000Z,",
+                                "  rate_limit_remaining: 499",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Write an async function to get resources and includ color and image metadata."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "async function getAsset(publicId) {\n  try {\n    const resource = await cloudinary.api.resource(publicId, {\n      resource_type: 'image', //default\n      image_metadata: true,\n    });\n    console.log(resource);\n  } catch (error) {\n    console.log('Error', error);\n    return error;\n  }\n}\ngetAsset('mds2vuzhddrdyyvnp1jx')"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  asset_id: '6f37a912b19236b26f1ad19a13c23cde',",
+                                "  public_id: 'mds2vuzhddrdyyvnp1jx',",
+                                "  format: 'glb',",
+                                "  version: 1653449913,",
+                                "  resource_type: 'image',",
+                                "  type: 'upload',",
+                                "  created_at: '2022-05-25T03:38:33Z',",
+                                "  bytes: 123564,",
+                                "  backup: true,",
+                                "  folder: '',",
+                                "  access_mode: 'public',",
+                                "  url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1653449913/mds2vuzhddrdyyvnp1jx.glb',",
+                                "  secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1653449913/mds2vuzhddrdyyvnp1jx.glb',",
+                                "  tags: [ 'test-3d' ],",
+                                "  next_cursor: 'c94ff66f1b49cc4424195bf6c641c26e123405fa16e4304bc39d5c71e4113b07',",
+                                "  derived: [",
+                                "    {",
+                                "      transformation: 'f_gif/fl_animated,dl_5/glb',",
+                                "      format: 'gif',",
+                                "      bytes: 675122,",
+                                "      id: '7db56c237df1983159f24244bc43bf54',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/f_gif/fl_animated,dl_5/v1653449913/mds2vuzhddrdyyvnp1jx.glb',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/f_gif/fl_animated,dl_5/v1653449913/mds2vuzhddrdyyvnp1jx.glb',",
+                                "      extension: 'glb'",
+                                "    },",
+                                "    {",
+                                "      transformation: 'f_gif/fl_animated/glb',",
+                                "      format: 'gif',",
+                                "      bytes: 675122,",
+                                "      id: 'e2b284a02baad2d36691fddf6c62f1ea',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/f_gif/fl_animated/v1653449913/mds2vuzhddrdyyvnp1jx.glb',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/f_gif/fl_animated/v1653449913/mds2vuzhddrdyyvnp1jx.glb',",
+                                "      extension: 'glb'",
+                                "    },",
+                                "    {",
+                                "      transformation: 'h_1024,w_1024,c_fill,g_auto,f_webp,fl_awebp,q_auto:best/glb',",
+                                "      format: 'webp',",
+                                "      bytes: 19240,",
+                                "      id: '902290816570aa0c329625ac3f3ef6e4',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/h_1024,w_1024,c_fill,g_auto,f_webp,fl_awebp,q_auto:best/v1653449913/mds2vuzhddrdyyvnp1jx.glb',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/h_1024,w_1024,c_fill,g_auto,f_webp,fl_awebp,q_auto:best/v1653449913/mds2vuzhddrdyyvnp1jx.glb',",
+                                "      extension: 'glb'",
+                                "    },",
+                                "    {",
+                                "      transformation: 'b_rgb:FFFFFF,c_pad,dpr_2.0,f_webp,fl_awebp,h_100,q_auto,w_100/c_pad,h_100,w_100/png',",
+                                "      format: 'webp',",
+                                "      bytes: 1066,",
+                                "      id: 'fe61222e88cd8da5f598667cb983088f',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_pad,dpr_2.0,f_webp,fl_awebp,h_100,q_auto,w_100/c_pad,h_100,w_100/v1653449913/mds2vuzhddrdyyvnp1jx.png',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_pad,dpr_2.0,f_webp,fl_awebp,h_100,q_auto,w_100/c_pad,h_100,w_100/v1653449913/mds2vuzhddrdyyvnp1jx.png',",
+                                "      extension: 'png'",
+                                "    },",
+                                "    {",
+                                "      transformation: 'b_rgb:FFFFFF,c_pad,f_gltf/',",
+                                "      format: 'gltf',",
+                                "      bytes: 1865,",
+                                "      id: '546a39421414ad05d633347feb4216f4',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_pad,f_gltf/v1653449913/mds2vuzhddrdyyvnp1jx',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_pad,f_gltf/v1653449913/mds2vuzhddrdyyvnp1jx',",
+                                "      extension: ''",
+                                "    },",
+                                "    {",
+                                "      transformation: 'b_rgb:FFFFFF,c_pad,f_gltf/pg_image:1,f_png,q_auto,fl_lossy/',",
+                                "      format: 'png',",
+                                "      bytes: 18464,",
+                                "      id: '678ee7587aaea518a8cd4ef3b1b9563a',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_pad,f_gltf/pg_image:1,f_png,q_auto,fl_lossy/v1653449913/mds2vuzhddrdyyvnp1jx',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_pad,f_gltf/pg_image:1,f_png,q_auto,fl_lossy/v1653449913/mds2vuzhddrdyyvnp1jx',",
+                                "      extension: ''",
+                                "    },",
+                                "    {",
+                                "      transformation: 'b_rgb:FFFFFF,c_pad,f_gltf/pg_buffer:1/',",
+                                "      format: 'gltf',",
+                                "      bytes: 121968,",
+                                "      id: '3f00cde1b4a1e6f8b06cd3a83d58c8c0',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_pad,f_gltf/pg_buffer:1/v1653449913/mds2vuzhddrdyyvnp1jx',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_pad,f_gltf/pg_buffer:1/v1653449913/mds2vuzhddrdyyvnp1jx',",
+                                "      extension: ''",
+                                "    },",
+                                "    {",
+                                "      transformation: 'b_rgb:FFFFFF,c_pad,dpr_2.0,f_webp,fl_awebp,h_32,q_auto,w_32/c_pad,h_32,w_32/',",
+                                "      format: 'webp',",
+                                "      bytes: 294,",
+                                "      id: '6f774691b2e3e72ee19a78948cf0091d',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_pad,dpr_2.0,f_webp,fl_awebp,h_32,q_auto,w_32/c_pad,h_32,w_32/v1653449913/mds2vuzhddrdyyvnp1jx',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_pad,dpr_2.0,f_webp,fl_awebp,h_32,q_auto,w_32/c_pad,h_32,w_32/v1653449913/mds2vuzhddrdyyvnp1jx',",
+                                "      extension: ''",
+                                "    },",
+                                "    {",
+                                "      transformation: 'b_rgb:FFFFFF,c_fill,dpr_2.0,f_webp,fl_awebp,g_auto,h_43,q_auto,w_24/c_fill,h_43,w_24/glb',",
+                                "      format: 'webp',",
+                                "      bytes: 326,",
+                                "      id: '0557da3a2623531a7fabf6af0c4c58f0',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_fill,dpr_2.0,f_webp,fl_awebp,g_auto,h_43,q_auto,w_24/c_fill,h_43,w_24/v1653449913/mds2vuzhddrdyyvnp1jx.glb',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_fill,dpr_2.0,f_webp,fl_awebp,g_auto,h_43,q_auto,w_24/c_fill,h_43,w_24/v1653449913/mds2vuzhddrdyyvnp1jx.glb',",
+                                "      extension: 'glb'",
+                                "    },",
+                                "    {",
+                                "      transformation: 'b_rgb:FFFFFF,c_fill,f_gltf/glb',",
+                                "      format: 'gltf',",
+                                "      bytes: 1867,",
+                                "      id: '45400ede19841b2722fc35c1c13f0492',",
+                                "      url: 'http://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_fill,f_gltf/v1653449913/mds2vuzhddrdyyvnp1jx.glb',",
+                                "      secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/b_rgb:FFFFFF,c_fill,f_gltf/v1653449913/mds2vuzhddrdyyvnp1jx.glb',",
+                                "      extension: 'glb'",
+                                "    }",
+                                "  ],",
+                                "  derived_next_cursor: '1793e86decf78601aadd6870747b0fbd',",
+                                "  etag: '9bae2546637bee36016794ec9f82e94b',",
+                                "  usage: {},",
+                                "  original_filename: 'cube',",
+                                "  rate_limit_allowed: 500,",
+                                "  rate_limit_reset_at: 2022-07-07T03:00:00.000Z,",
+                                "  rate_limit_remaining: 497",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Add a tag to an asset\nAdding tags helps with management.  We use the \"Upload API\" to add tags to already uploaded assets.\n\nAfter adding the tag, write a code block to see if the tag is in the resource."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "cloudinary.uploader.add_tag(\"desert\", [\"cupcakes\"])\n\t.then(result => { console.log(result) })\n\t.catch(error => { console.log(error) });"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ public_ids: [ 'cupcakes' ] }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "getAsset('cupcakes')"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  asset_id: '5d47f4109df08a081966d77df9fa51a3',",
+                                "  public_id: 'cupcakes',",
+                                "  format: 'jpg',",
+                                "  version: 1657158837,",
+                                "  resource_type: 'image',",
+                                "  type: 'upload',",
+                                "  created_at: '2022-05-30T03:25:14Z',",
+                                "  bytes: 246958,",
+                                "  width: 700,",
+                                "  height: 456,",
+                                "  backup: true,",
+                                "  folder: '',",
+                                "  access_mode: 'public',",
+                                "  url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657158837/cupcakes.jpg',",
+                                "  secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657158837/cupcakes.jpg',",
+                                "  tags: [ 'desert' ],",
+                                "  next_cursor: '470c7734b046767f750a508c5eab9d6be7bcae45a84183b837d690344610342a',",
+                                "  derived: [],",
+                                "  etag: '78ef208b59d8277be9f12ec53c9a5224',",
+                                "  image_metadata: {",
+                                "    JFIFVersion: '1.02',",
+                                "    ResolutionUnit: 'inches',",
+                                "    XResolution: '175',",
+                                "    DisplayedUnitsX: 'inches',",
+                                "    YResolution: '175',",
+                                "    DisplayedUnitsY: 'inches',",
+                                "    GlobalAngle: '120',",
+                                "    CopyrightFlag: 'false',",
+                                "    PhotoshopQuality: '12',",
+                                "    PhotoshopFormat: 'Standard',",
+                                "    ProgressiveScans: '3 Scans',",
+                                "    ProfileDescription: 'sRGB IEC61966-2.1',",
+                                "    Colorspace: 'RGB',",
+                                "    DPI: '175'",
+                                "  },",
+                                "  illustration_score: 0,",
+                                "  semi_transparent: false,",
+                                "  grayscale: false,",
+                                "  pages: 1,",
+                                "  usage: {},",
+                                "  original_filename: 'Chocolate_cupcakes',",
+                                "  rate_limit_allowed: 500,",
+                                "  rate_limit_reset_at: 2022-07-07T03:00:00.000Z,",
+                                "  rate_limit_remaining: 496",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Add Context to an uploaded asset\nTags are strings that get added to a list, but context are expressed as key/value pairs.  Add context to an already uploaded asset.\nWhen you've added the context, use the Admin API to see if it got added."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "cloudinary.uploader.add_context(\"type=dessert|sweet=true\", [\"cupcakes\"])\n    .then(result => { console.log(result) })\n    .catch(error => { console.log(error) });"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ public_ids: [ 'cupcakes' ] }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "getAsset('cupcakes')"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  asset_id: '5d47f4109df08a081966d77df9fa51a3',",
+                                "  public_id: 'cupcakes',",
+                                "  format: 'jpg',",
+                                "  version: 1657158837,",
+                                "  resource_type: 'image',",
+                                "  type: 'upload',",
+                                "  created_at: '2022-05-30T03:25:14Z',",
+                                "  bytes: 246958,",
+                                "  width: 700,",
+                                "  height: 456,",
+                                "  backup: true,",
+                                "  folder: '',",
+                                "  access_mode: 'public',",
+                                "  url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657158837/cupcakes.jpg',",
+                                "  secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657158837/cupcakes.jpg',",
+                                "  tags: [ 'desert' ],",
+                                "  context: { custom: { sweet: 'true', type: 'dessert' } },",
+                                "  next_cursor: '470c7734b046767f750a508c5eab9d6be7bcae45a84183b837d690344610342a',",
+                                "  derived: [],",
+                                "  etag: '78ef208b59d8277be9f12ec53c9a5224',",
+                                "  image_metadata: {",
+                                "    JFIFVersion: '1.02',",
+                                "    ResolutionUnit: 'inches',",
+                                "    XResolution: '175',",
+                                "    DisplayedUnitsX: 'inches',",
+                                "    YResolution: '175',",
+                                "    DisplayedUnitsY: 'inches',",
+                                "    GlobalAngle: '120',",
+                                "    CopyrightFlag: 'false',",
+                                "    PhotoshopQuality: '12',",
+                                "    PhotoshopFormat: 'Standard',",
+                                "    ProgressiveScans: '3 Scans',",
+                                "    ProfileDescription: 'sRGB IEC61966-2.1',",
+                                "    Colorspace: 'RGB',",
+                                "    DPI: '175'",
+                                "  },",
+                                "  illustration_score: 0,",
+                                "  semi_transparent: false,",
+                                "  grayscale: false,",
+                                "  pages: 1,",
+                                "  usage: {},",
+                                "  original_filename: 'Chocolate_cupcakes',",
+                                "  rate_limit_allowed: 500,",
+                                "  rate_limit_reset_at: 2022-07-07T03:00:00.000Z,",
+                                "  rate_limit_remaining: 495",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Implement a Pagination function\nThis function should get all resources and if there are more than specified in `max_reslts`, it should find them using the `next_cursor` \nvalue."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "var resourceList = [];\n\n\nconst pushAll = (target, source) => {\n    source.forEach((item) => {\n        target.push(item);\n    });\n};\n\n\nconst getResources = async (options) => {\n    try {\n        const result = await cloudinary.api.resources(options);\n        return result; //returns a promise\n    } catch (err) {\n        console.log(err);\n    }\n};\nconst getAllResources = async (options) => {\n    try {\n        do {\n            const result = await getResources(options\n            );\n            pushAll(resourceList, result.resources);\n            if (result.next_cursor) {\n                options.next_cursor = result.next_cursor;\n            } else {\n                options.next_cursor = null;\n            }\n        } while (options.next_cursor != null);\n        console.log(JSON.stringify(resourceList, null, 2));\n        console.log('total resources:', resourceList.length);\n        return resourceList;\n    } catch (err) {\n        console.log(err);\n    }\n};\n\ngetAllResources(\n    {\n        type: 'upload',\n        max_results: 1,\n        prefix: 'logo',\n        next_cursor: null,\n    }\n);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[",
+                                "  {",
+                                "    \"asset_id\": \"206db96557267521c01c03785060b2b5\",",
+                                "    \"public_id\": \"logo\",",
+                                "    \"format\": \"png\",",
+                                "    \"version\": 1625159580,",
+                                "    \"resource_type\": \"image\",",
+                                "    \"type\": \"upload\",",
+                                "    \"created_at\": \"2021-07-01T17:13:00Z\",",
+                                "    \"bytes\": 9493,",
+                                "    \"width\": 513,",
+                                "    \"height\": 336,",
+                                "    \"backup\": true,",
+                                "    \"folder\": \"\",",
+                                "    \"access_mode\": \"public\",",
+                                "    \"url\": \"http://res.cloudinary.com/picturecloud7/image/upload/v1625159580/logo.png\",",
+                                "    \"secure_url\": \"https://res.cloudinary.com/picturecloud7/image/upload/v1625159580/logo.png\"",
+                                "  },",
+                                "  {",
+                                "    \"asset_id\": \"8a3f7daa76241cd7e00b88c45cb8ef3c\",",
+                                "    \"public_id\": \"logo-big\",",
+                                "    \"format\": \"png\",",
+                                "    \"version\": 1582221022,",
+                                "    \"resource_type\": \"image\",",
+                                "    \"type\": \"upload\",",
+                                "    \"created_at\": \"2020-02-20T17:50:22Z\",",
+                                "    \"bytes\": 114814,",
+                                "    \"width\": 1000,",
+                                "    \"height\": 1000,",
+                                "    \"backup\": true,",
+                                "    \"folder\": \"\",",
+                                "    \"access_mode\": \"public\",",
+                                "    \"url\": \"http://res.cloudinary.com/picturecloud7/image/upload/v1582221022/logo-big.png\",",
+                                "    \"secure_url\": \"https://res.cloudinary.com/picturecloud7/image/upload/v1582221022/logo-big.png\"",
+                                "  },",
+                                "  {",
+                                "    \"asset_id\": \"0cacd40a42b27c273695ecb056cf407f\",",
+                                "    \"public_id\": \"logo-small\",",
+                                "    \"format\": \"png\",",
+                                "    \"version\": 1582220917,",
+                                "    \"resource_type\": \"image\",",
+                                "    \"type\": \"upload\",",
+                                "    \"created_at\": \"2020-02-20T17:48:37Z\",",
+                                "    \"bytes\": 5757,",
+                                "    \"width\": 200,",
+                                "    \"height\": 200,",
+                                "    \"backup\": true,",
+                                "    \"folder\": \"\",",
+                                "    \"access_mode\": \"public\",",
+                                "    \"url\": \"http://res.cloudinary.com/picturecloud7/image/upload/v1582220917/logo-small.png\",",
+                                "    \"secure_url\": \"https://res.cloudinary.com/picturecloud7/image/upload/v1582220917/logo-small.png\"",
+                                "  }",
+                                "]",
+                                "total resources: 3",
+                                ""
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "[",
+                                "  {",
+                                "    asset_id: \u001b[32m'206db96557267521c01c03785060b2b5'\u001b[39m,",
+                                "    public_id: \u001b[32m'logo'\u001b[39m,",
+                                "    format: \u001b[32m'png'\u001b[39m,",
+                                "    version: \u001b[33m1625159580\u001b[39m,",
+                                "    resource_type: \u001b[32m'image'\u001b[39m,",
+                                "    type: \u001b[32m'upload'\u001b[39m,",
+                                "    created_at: \u001b[32m'2021-07-01T17:13:00Z'\u001b[39m,",
+                                "    bytes: \u001b[33m9493\u001b[39m,",
+                                "    width: \u001b[33m513\u001b[39m,",
+                                "    height: \u001b[33m336\u001b[39m,",
+                                "    backup: \u001b[33mtrue\u001b[39m,",
+                                "    folder: \u001b[32m''\u001b[39m,",
+                                "    access_mode: \u001b[32m'public'\u001b[39m,",
+                                "    url: \u001b[32m'http://res.cloudinary.com/picturecloud7/image/upload/v1625159580/logo.png'\u001b[39m,",
+                                "    secure_url: \u001b[32m'https://res.cloudinary.com/picturecloud7/image/upload/v1625159580/logo.png'\u001b[39m",
+                                "  },",
+                                "  {",
+                                "    asset_id: \u001b[32m'8a3f7daa76241cd7e00b88c45cb8ef3c'\u001b[39m,",
+                                "    public_id: \u001b[32m'logo-big'\u001b[39m,",
+                                "    format: \u001b[32m'png'\u001b[39m,",
+                                "    version: \u001b[33m1582221022\u001b[39m,",
+                                "    resource_type: \u001b[32m'image'\u001b[39m,",
+                                "    type: \u001b[32m'upload'\u001b[39m,",
+                                "    created_at: \u001b[32m'2020-02-20T17:50:22Z'\u001b[39m,",
+                                "    bytes: \u001b[33m114814\u001b[39m,",
+                                "    width: \u001b[33m1000\u001b[39m,",
+                                "    height: \u001b[33m1000\u001b[39m,",
+                                "    backup: \u001b[33mtrue\u001b[39m,",
+                                "    folder: \u001b[32m''\u001b[39m,",
+                                "    access_mode: \u001b[32m'public'\u001b[39m,",
+                                "    url: \u001b[32m'http://res.cloudinary.com/picturecloud7/image/upload/v1582221022/logo-big.png'\u001b[39m,",
+                                "    secure_url: \u001b[32m'https://res.cloudinary.com/picturecloud7/image/upload/v1582221022/logo-big.png'\u001b[39m",
+                                "  },",
+                                "  {",
+                                "    asset_id: \u001b[32m'0cacd40a42b27c273695ecb056cf407f'\u001b[39m,",
+                                "    public_id: \u001b[32m'logo-small'\u001b[39m,",
+                                "    format: \u001b[32m'png'\u001b[39m,",
+                                "    version: \u001b[33m1582220917\u001b[39m,",
+                                "    resource_type: \u001b[32m'image'\u001b[39m,",
+                                "    type: \u001b[32m'upload'\u001b[39m,",
+                                "    created_at: \u001b[32m'2020-02-20T17:48:37Z'\u001b[39m,",
+                                "    bytes: \u001b[33m5757\u001b[39m,",
+                                "    width: \u001b[33m200\u001b[39m,",
+                                "    height: \u001b[33m200\u001b[39m,",
+                                "    backup: \u001b[33mtrue\u001b[39m,",
+                                "    folder: \u001b[32m''\u001b[39m,",
+                                "    access_mode: \u001b[32m'public'\u001b[39m,",
+                                "    url: \u001b[32m'http://res.cloudinary.com/picturecloud7/image/upload/v1582220917/logo-small.png'\u001b[39m,",
+                                "    secure_url: \u001b[32m'https://res.cloudinary.com/picturecloud7/image/upload/v1582220917/logo-small.png'\u001b[39m",
+                                "  }",
+                                "]"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -3,7 +3,7 @@
         {
             "language": "markdown",
             "source": [
-                "## Upload an Image and Cloudinary will assign a random id"
+                "# Cloudinary Upload"
             ],
             "outputs": []
         },
@@ -76,9 +76,9 @@
                                 "{",
                                 "  asset_id: '5d47f4109df08a081966d77df9fa51a3',",
                                 "  public_id: 'cupcakes',",
-                                "  version: 1653881114,",
-                                "  version_id: '5c8d6f233e4d52177de1d0fc43e1d2a2',",
-                                "  signature: '933bbb1db1ef4fcc5e0a7d6455beb34c67442b49',",
+                                "  version: 1657158837,",
+                                "  version_id: '2bda708cc4cd5294b96767a08b3826a1',",
+                                "  signature: 'a9b294761f7822c271bc2c4b0560dc0fc461dd06',",
                                 "  width: 700,",
                                 "  height: 456,",
                                 "  format: 'jpg',",
@@ -89,8 +89,8 @@
                                 "  type: 'upload',",
                                 "  etag: '78ef208b59d8277be9f12ec53c9a5224',",
                                 "  placeholder: false,",
-                                "  url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1653881114/cupcakes.jpg',",
-                                "  secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1653881114/cupcakes.jpg',",
+                                "  url: 'http://res.cloudinary.com/picturecloud7/image/upload/v1657158837/cupcakes.jpg',",
+                                "  secure_url: 'https://res.cloudinary.com/picturecloud7/image/upload/v1657158837/cupcakes.jpg',",
                                 "  access_mode: 'public',",
                                 "  overwritten: true,",
                                 "  original_filename: 'Chocolate_cupcakes',",
