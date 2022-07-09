@@ -1,0 +1,39 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "# Using Webhooks with Cloudinary"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Use Sendgrid API to Notify \n\nThe event body will be extracted and emailed to the registered recipient"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "require('dotenv').config();\nconst sgMail = require('@sendgrid/mail');\n\n// exit if not a post\nexports.handler = async function (event, context) {\n  if (!event.body || event.httpMethod !== 'POST') {\n    return {\n      statusCode: 400,\n      headers: {\n        'Access-Control-Allow-Origin': '*',\n        'Access-Control-Allow-Headers': 'Content-Type',\n      },\n      body: JSON.stringify({\n        status: 'invalid-method',\n      }),\n    };\n  }\n\n  // get data\n  const data = JSON.parse(event.body);\n  console.log(JSON.stringify(data, null, 2));\n\n  sgMail.setApiKey(process.env.SENDGRID_API_KEY);\n\n  const msg = {\n    to: process.env.TO_RECIPIENTS,\n    from: process.env.FROM_VERIFIED_SENDER,\n    subject: 'Webhook Notification',\n    text: JSON.stringify(data, null, 2),\n  };\n  console.log('msg', msg);\n\n  try {\n    const response = await sgMail.sendMultiple(msg);\n    console.log('success', response[0].statusCode);\n    console.log('success-response', response[0]);\n\n    return {\n      statusCode: response[0].statusCode,\n      body: JSON.stringify({ message: response[0] }),\n    };\n  } catch (error) {\n    console.error('error', JSON.stringify(error, 0, 2));\n    // const errorMsg = error.response.body.errors[0].message;\n    // console.log(errorMsg);\n\n    return {\n      statusCode: error.code,\n      body: error.response.body.errors[0].message,\n    };\n  }\n};"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Google Moderation fires Notification when Complete\n\nThis webhook is executed when Google moderation is complete."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "require('dotenv').config();\nconst cloudinary = require('cloudinary').v2;\nconst fetch = require('node-fetch');\n\n// use this to call netlify functions\nasync function processQ(fnURL) {\n  // return promise\n  return await fetch(fnURL, { method: 'POST'});\n}\n\nexports.handler = async function (event, context) {\n  // exit if not a post\n  if (!event.body || event.httpMethod !== 'POST') {\n    return {\n      statusCode: 400,\n      headers: {\n        'Access-Control-Allow-Origin': '*',\n        'Access-Control-Allow-Headers': 'Content-Type',\n      },\n      body: JSON.stringify({\n        status: 'invalid-method',\n      }),\n    };\n  }\n\n  // setup functions to process Google moderation Qs\n  const approvedFn = `${process.env.PROD_FN_PATH}webhook_process_approved_queue`;\n  const rejectedFn = `${process.env.PROD_FN_PATH}webhook_process_rejected_queue`;\n  console.log(approvedFn);\n  console.log(rejectedFn);\n\n  try {\n    const approvedResponse = await processQ(approvedFn);\n    console.log(approvedResponse);\n    const rejectedResponse = await processQ(rejectedFn);\n    console.log(rejectedResponse);\n    return {\n      statusCode: 200,\n      body: JSON.stringify({\n        message: 'Google Moderation Q processing complete',\n      }),\n    };\n  } catch (error) {\n    console.error('error', JSON.stringify(error, 0, 2));\n\n    return {\n      statusCode: 500,\n      body: JSON.stringify({ error: 'error processing Google Moderation Q' }),\n    };\n  }\n};"
+            ],
+            "outputs": []
+        }
+    ]
+}
