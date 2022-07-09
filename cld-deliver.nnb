@@ -1,0 +1,147 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "# Cloudinary Tranform and Deliver"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Deliver an Image"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// create image url\nrequire('dotenv').config();\nconst cloudinary = require('cloudinary').v2;\nconsole.log(cloudinary.config().cloud_name)\nlet url = cloudinary.url('goldfish-b')\nconsole.log(url)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "picturecloud7",
+                                "http://res.cloudinary.com/picturecloud7/image/upload/goldfish-b",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### Request image from CDN\n<img width=\"400px\" src=\"http://res.cloudinary.com/picturecloud7/image/upload/goldfish-b\" alt=\"goldfish\">"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Deliver a Video\n\nYou need to add the `resource_type` because the default is `image`."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// create a video url\n\n// require('dotenv').config();\n// const cloudinary = require('cloudinary').v2;\nurl = cloudinary.url('sledding-b', {resource_type:'video',format: 'mp4'})\nconsole.log(url)\nconsole.log(cloudinary.url('sledding-b', \n{resource_type: 'video',\nformat: 'jpg'\n}\n))\n// create a video tag\nlet video = cloudinary.video('sledding-b')\nconsole.log(video)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "http://res.cloudinary.com/picturecloud7/video/upload/sledding-b.mp4",
+                                "http://res.cloudinary.com/picturecloud7/video/upload/sledding-b.jpg",
+                                "<video poster='http://res.cloudinary.com/picturecloud7/video/upload/sledding-b.jpg'><source src='http://res.cloudinary.com/picturecloud7/video/upload/sledding-b.webm' type='video/webm'><source src='http://res.cloudinary.com/picturecloud7/video/upload/sledding-b.mp4' type='video/mp4'><source src='http://res.cloudinary.com/picturecloud7/video/upload/sledding-b.ogv' type='video/ogg'></video>",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### Request video from CDN\n\nIt's not possible to embed video or use video elements in markdown. Instead we'll take a frame to use as a 'poster', and add a link the opens the video in a browser window.\n\n<a href=\"http://res.cloudinary.com/picturecloud7/video/upload/sledding-b\" title=\"sledding\"><img src=\"http://res.cloudinary.com/picturecloud7/video/upload/w_400/sledding-b.jpg\" alt=\"Sledding\" /></a>\n\n\nhttp://res.cloudinary.com/picturecloud7/video/upload/sledding-b"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Add an image transformation\n\nTransformations can be used to improve optimization or add aesthetic effects.  In this example, we're adding an aesthetic effect"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// try cartoonify\nconsole.log(cloudinary.url('goldfish-b',{effect: \"cartoonify\"})"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "http://res.cloudinary.com/picturecloud7/image/upload/e_cartoonify/goldfish-b",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### Deliver the tranformed image\n\n<img width=\"400px\" src=\"http://res.cloudinary.com/picturecloud7/image/upload/e_cartoonify/goldfish-b\" alt=\"goldfish cartoonified\">"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Optimize an Image\n\nImage optimization can happen when you do one or more of the following;\n\n- make the image smaller\n- compress the image\n- use the optimum format for the browser requestion the image\n\nUse `q_auto` and `f_auto` to optimize the goldfish image and set the width to 400 to scale the image to a smaller size.\n\nLook at the iamge in the browser and determine the size with and without the optimization steps.\n\n\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(cloudinary.url('goldfish-b'))\nconsole.log(cloudinary.url('goldfish-b',{width: 400, quality: 'auto', fetch_format: 'auto'}))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "http://res.cloudinary.com/picturecloud7/image/upload/goldfish-b",
+                                "http://res.cloudinary.com/picturecloud7/image/upload/f_auto,q_auto,w_400/goldfish-b",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "#### Optimized Image  143K\n\n<a href=\"http://res.cloudinary.com/picturecloud7/image/upload/goldfish-b\" title=\"sledding\"><img width=\"400px\" src=\"http://res.cloudinary.com/picturecloud7/image/upload/goldfish-b\" alt=\"unoptimized\" /></a>\n\n\n#### Unoptimized Image 8K\n\n<a href=\"http://res.cloudinary.com/picturecloud7/image/upload/f_auto,q_auto,w_400/goldfish-b\" title=\"sledding\"><img width=\"400px\" src=\"http://res.cloudinary.com/picturecloud7/image/upload/f_auto,q_auto,w_400/goldfish-b\" alt=\"optimized\" /></a>\n\n"
+            ],
+            "outputs": []
+        }
+    ]
+}
