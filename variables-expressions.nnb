@@ -1,0 +1,95 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "# JavaScript Variables and Expressions\nUsing variables allows us create flexible programs.  We can set up expressions that can use different data.  If you've studied algebra, \nyou may recall that you can create expressions like `y  = x + 2`.  When we substitute different values for `x`, the value for `y` will change. \n\nWe'll learn how to declare variables and create expressions using variables in this module."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Variables and Data\n\nVariables are used to reference data.  We use data in expressions, which are used to create new data.  An expression using data that we're all familiar with is `1 + 2 = 3`.  We are using the data `1` and `2` to create a new value `3` using the addition operator.\n\nDate is categorized by type.  Different types of data are operated on differently - they use different operators.  In our example above we used the math operator `+` to calculate a sum of two numbers.  In this module we'll look at three types of data:\n\n- numeric: ex: `1` and `1.5`\n- string:  the term string is used to talk about text data ex: 'hello'\n- boolean: ex: `true` and `false`\n\nEach of these types use different operators and we'll see how to create new data out of existing data using expressions."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Review\n\nLet's begin by reviewing how we can log output to the console.  Recall that we can use the expression `console.log('hello')` to write the word \"hello\" to the console.  Write and execute that code below."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// log \"hello\"\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// log \"hello, my name is <fill in your name>\""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## Declaring variables\nThere are a couple of ways to declare variables.  In this module we'll use `var` to declare a new variable.  There are two other commands that you can use to declare variables, `let` and `const`.   \nWe use the word `scope` to decscribe where a variables will be known.  When we use the `var` command, we are created a `globally` scoped variable.  Globally scoped variables are recognized throughout a program.  This is how all variables were scoped until 2015 when `let` and `const` were introduced.  They are `block` scoped.  We'll cover those in a future module."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Let's start by declaring two variables:  `height` and `width`.  Each declared variable  has a unique name.  We can use this name to reference the variable's current value anywhere in our program.  We often provide an intial value when we declare a variable.  For example, this code declare the variable `height` and sets it equal to 300. \n```\nvar height = 300;\n```\n\nWrite and run code to declare a variable height equal to 300 and a variable width equal to 450."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// declare height with an initial value of 300 and width with an initial value of 450"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Now log the values of each variable.  For example to log the value of `height`, try using a statement like this: \n```\nconsole.log('height:', height)\n```"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// log the values of height and width"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Once we have these variable declare and assigned a value, we can use them in an expression.  Expressions can come in many forms.  The simplest expression look like algebra.  We can use mathematical operators on variables that contain numeric values.  The basic math operators are `+`, `-`, `*`, `/`, which stand for `plus`, `minus`, `multiply`, `divide`.  To add two variables together and log the result, you could write code like this:\n```\nconsole.log( height + width);\n```\nWrite code to log all of the expressions you can create for height and width using the 4 mathematical operators.  "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// log expressions for height and width using the 4 mathematical operators +, -, *, /"
+            ],
+            "outputs": []
+        }
+    ]
+}
