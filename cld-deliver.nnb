@@ -10,7 +10,7 @@
         {
             "language": "markdown",
             "source": [
-                "## Deliver an Image"
+                "## Create Image URL and Deliver"
             ],
             "outputs": []
         },
@@ -44,14 +44,14 @@
         {
             "language": "markdown",
             "source": [
-                "## Deliver a Video\n\nYou need to add the `resource_type` because the default is `image`."
+                "## Create a Video URL\n\nYou need to add the `resource_type` because the default is `image`. Start with a video URL.  Then create a poster and finally a video tag."
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                "// create a video url\n\n// require('dotenv').config();\n// const cloudinary = require('cloudinary').v2;\nurl = cloudinary.url('sledding-b', {resource_type:'video',format: 'mp4'})\nconsole.log(url)\nconsole.log(cloudinary.url('sledding-b', \n{resource_type: 'video',\nformat: 'jpg'\n}\n))\n// create a video tag\nlet video = cloudinary.video('sledding-b')\nconsole.log(video)"
+                "// create a video url\nrequire('dotenv').config();\nconst cloudinary = require('cloudinary').v2;\nurl = cloudinary.url('sledding-b', {resource_type:'video',format: 'mp4'})\nconsole.log(url)\n// create poster image\nconsole.log(cloudinary.url('sledding-b', {resource_type: 'video',format: 'jpg'}))\n// create a video tag\nlet video = cloudinary.video('sledding-b')\nconsole.log(video)"
             ],
             "outputs": [
                 {
@@ -60,7 +60,6 @@
                             "mime": "application/vnd.code.notebook.stdout",
                             "value": [
                                 "http://res.cloudinary.com/picturecloud7/video/upload/sledding-b.mp4",
-                                "http://res.cloudinary.com/picturecloud7/video/upload/sledding-b.jpg",
                                 "<video poster='http://res.cloudinary.com/picturecloud7/video/upload/sledding-b.jpg'><source src='http://res.cloudinary.com/picturecloud7/video/upload/sledding-b.webm' type='video/webm'><source src='http://res.cloudinary.com/picturecloud7/video/upload/sledding-b.mp4' type='video/mp4'><source src='http://res.cloudinary.com/picturecloud7/video/upload/sledding-b.ogv' type='video/ogg'></video>",
                                 ""
                             ]
@@ -79,7 +78,7 @@
         {
             "language": "markdown",
             "source": [
-                "## Add an image transformation\n\nTransformations can be used to improve optimization or add aesthetic effects.  In this example, we're adding an aesthetic effect"
+                "## Add an image effect transformation\n\nTransformations can be used to improve optimization or add aesthetic effects.  In this example, we're adding an aesthetic effect."
             ],
             "outputs": []
         },
@@ -139,7 +138,7 @@
         {
             "language": "markdown",
             "source": [
-                "#### Optimized Image  143K\n\n<a href=\"http://res.cloudinary.com/picturecloud7/image/upload/goldfish-b\" title=\"sledding\"><img width=\"400px\" src=\"http://res.cloudinary.com/picturecloud7/image/upload/goldfish-b\" alt=\"unoptimized\" /></a>\n\n\n#### Unoptimized Image 8K\n\n<a href=\"http://res.cloudinary.com/picturecloud7/image/upload/f_auto,q_auto,w_400/goldfish-b\" title=\"sledding\"><img width=\"400px\" src=\"http://res.cloudinary.com/picturecloud7/image/upload/f_auto,q_auto,w_400/goldfish-b\" alt=\"optimized\" /></a>\n\n"
+                "#### Unoptimized Image  143K\n\n<a href=\"http://res.cloudinary.com/picturecloud7/image/upload/goldfish-b\" title=\"sledding\"><img width=\"400px\" src=\"http://res.cloudinary.com/picturecloud7/image/upload/goldfish-b\" alt=\"unoptimized\" /></a>\n\n\n#### Optimzed Image 8K\n\n<a href=\"http://res.cloudinary.com/picturecloud7/image/upload/f_auto,q_auto,w_400/goldfish-b\" title=\"sledding\"><img width=\"400px\" src=\"http://res.cloudinary.com/picturecloud7/image/upload/f_auto,q_auto,w_400/goldfish-b\" alt=\"optimized\" /></a>\n\n"
             ],
             "outputs": []
         }

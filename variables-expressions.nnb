@@ -22,14 +22,14 @@
             "outputs": []
         },
         {
-            "language": "typescript",
+            "language": "javascript",
             "source": [
                 "// log \"hello\"\n"
             ],
             "outputs": []
         },
         {
-            "language": "typescript",
+            "language": "javascript",
             "source": [
                 "// log \"hello, my name is <fill in your name>\""
             ],
@@ -57,7 +57,7 @@
             "outputs": []
         },
         {
-            "language": "typescript",
+            "language": "javascript",
             "source": [
                 "// declare height with an initial value of 300 and width with an initial value of 450"
             ],
@@ -71,7 +71,7 @@
             "outputs": []
         },
         {
-            "language": "typescript",
+            "language": "javascript",
             "source": [
                 "// log the values of height and width"
             ],
@@ -85,7 +85,7 @@
             "outputs": []
         },
         {
-            "language": "typescript",
+            "language": "javascript",
             "source": [
                 "// log expressions for height and width using the 4 mathematical operators +, -, *, /"
             ],

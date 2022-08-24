@@ -10,14 +10,14 @@
         {
             "language": "markdown",
             "source": [
-                "## Cofingure Cloudinary with API_KEY, API_SECRET and CLOUD_NAME by reading CLOUDINARY_URL from hidden .env file\n\nYou can configure Cloudinary by supplying the SECRET, KEY, and CLOUD_NAME as individual items in an object, but Cloudinary\ncan parse these items from the CLOUDINARY_URL."
+                "### Cofingure Cloudinary with API_KEY, API_SECRET and CLOUD_NAME by reading CLOUDINARY_URL from hidden .env file\n\nConfigure Cloudinary by supplying the SECRET, KEY, and CLOUD_NAME as individual items in an object, but Cloudinary\ncan parse these items from the CLOUDINARY_URL."
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                "require('dotenv').config();\nconst cloudinary = require('cloudinary').v2;\nconsole.log(cloudinary.config().cloud_name)\n"
+                "require('dotenv').config();\nconst cld = require('cloudinary').v2;\nconsole.log(cld.config().cloud_name)"
             ],
             "outputs": [
                 {
