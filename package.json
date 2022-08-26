@@ -22,7 +22,8 @@
     "homepage": "https://github.com/rebeccapeltz/notebooks#readme",
     "dependencies": {
         "cloudinary": "^1.30.0",
-        "dotenv": "^16.0.1"
+        "dotenv": "^16.0.1",
+        "highcharts-export-server": "^2.1.0"
     },
     "devDependencies": {
         "@types/node": "^17.0.36"
