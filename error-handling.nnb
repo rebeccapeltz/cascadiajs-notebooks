@@ -1,0 +1,287 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "# Error Handling in JavaScript\n\nCreate 2 functions that accept a callback parameter and implement error handling. `goodHandler` will return the error and `badHandler` returns null."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## The Good Handler"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function goodHandler(fn) {\n    try {\n        return fn();\n    }\n    catch (e) {\n        return e.message;\n    }\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## The Bad Handler"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function badHandler(fn) {\n    try {\n        return fn();\n    }\n    catch (e) {\n        return null;\n    }\n}\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function callbackWithError() {\n    throw new Error(\"function is guaranteed to error\")\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function callbackWithNoError() {\n    return 'hello'\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Now test the `goodHandler` with both callbacks"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "First try to the `callbackWithNoError`"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(goodHandler(callbackWithNoError))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "hello",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Next try the `callbackWithError`"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "console.log(goodHandler(callbackWithError))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "function is guaranteed to error",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Now test the `badHandler` with both callbacks.\n\nFirst with the `callbackWithNoError`"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(badHandler(callbackWithNoError))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "hello",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Now test the `badHandler` with `callbackWithError`"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(badHandler(callbackWithError))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "null",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## The Ugly Handler\n\nKeep propagating the exception."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "function uglyHandler(fn) {\n    try {\n        return fn();\n    }\n    catch (e) {\n        throw new e;\n    }\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Now test the `uglyHandler` with both callbacks, starting with the `callbackWithNoError`."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "uglyHandler(callbackWithNoError)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "\u001b[32m'hello'\u001b[39m"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Now test the `uglyHandler` with `callbackWithError`."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(uglyHandler(callbackWithError))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.error",
+                            "value": {
+                                "name": "TypeError",
+                                "message": "e is not a constructor",
+                                "stack": "    at uglyHandler (<Cell 17> [6, 14])\n    at <Cell 21> [1, 7]\n    at <Cell 21> [4, 46]\n    at Script.runInContext (node:vm:141:12)\n    at Script.runInNewContext (node:vm:146:17)\n    at Object.runInNewContext (node:vm:306:38)\n    at C (/Users/rebeccapeltz/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:113345)\n    at t.execCode (/Users/rebeccapeltz/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:114312)\n    at k.<anonymous> (/Users/rebeccapeltz/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:142156)\n    at k.emit (node:events:513:28)"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "## The Ugly Handler: How to Bubble up Errors\nCreate a `SpecifiedError` that captures the stack."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const SpecifiedError = function SpecifiedError(message){\n    this.name='SpecifiedError'\n    this.message = message || 'no message'\n    this.stack = (new Error()).stack;\n}\nSpecifiedError.prototype =  new Error()\nSpecifiedError.prototype.constructor = SpecifiedError\nfunction fnWithUglyHandler(){\n    try {\n        throw new Error ('problem in fnWithUglyHandler')\n    }\n    catch (e) {\n        console.log('error low:',e.message)\n        throw new SpecifiedError(e.message)\n    }\n}\nfunction anotherHandledFn() {\n    try {\n        fnWithUglyHandler()\n        let result = 'no problem'\n        console.log(result)\n        return result\n    }\n    catch (e) {\n        console.log('error high: ',JSON.stringify(e,null,2))\n        throw new Error('problem in anotherHandleFn')\n    }\n}\nanotherHandledFn()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "error low: problem in fnWithUglyHandler",
+                                "error high:  {",
+                                "  \"name\": \"SpecifiedError\",",
+                                "  \"message\": \"problem in fnWithUglyHandler\",",
+                                "  \"stack\": \"Error\\n    at new SpecifiedError (<Cell 23> [4, 14])\\n    at fnWithUglyHandler (<Cell 23> [15, 14])\\n    at anotherHandledFn (<Cell 23> [21, 25])\\n    at <Cell 23> [31, 16]\\n    at <Cell 23> [32, 46]\\n    at Script.runInContext (node:vm:141:12)\\n    at Script.runInNewContext (node:vm:146:17)\\n    at Object.runInNewContext (node:vm:306:38)\\n    at C (/Users/rebeccapeltz/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:113345)\\n    at t.execCode (/Users/rebeccapeltz/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:114312)\"",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.error",
+                            "value": {
+                                "name": "Error",
+                                "message": "problem in anotherHandleFn",
+                                "stack": "    at anotherHandledFn (<Cell 23> [28, 14])\n    at <Cell 23> [31, 16]\n    at <Cell 23> [32, 46]\n    at Script.runInContext (node:vm:141:12)\n    at Script.runInNewContext (node:vm:146:17)\n    at Object.runInNewContext (node:vm:306:38)\n    at C (/Users/rebeccapeltz/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:113345)\n    at t.execCode (/Users/rebeccapeltz/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:114312)\n    at k.<anonymous> (/Users/rebeccapeltz/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:142156)\n    at k.emit (node:events:513:28)"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### Summary"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<table>\n<tr>\n<td>Error Handling Method</td>\n<td>Technique</td>\n<td>With Error</td>\n<td>Without Error</td>\n</tr>\n<tr>\n<td>Good</td>\n<td>returns a value</td>\n<td>√</td>\n<td>√</td>\n</tr>\n<tr>\n<td>Bad</td>\n<td>returns null</td>\n<td>√</td>\n<td>fails</td>\n</tr>\n<tr>\n<td>Ugly</td>\n<td>throw a new error that captures the stack</td>\n<td>√</td>\n<td>captures stack</td>\n</tr>\n</table>"
+            ],
+            "outputs": []
+        }
+    ]
+}
