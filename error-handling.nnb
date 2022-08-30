@@ -279,7 +279,7 @@
         {
             "language": "markdown",
             "source": [
-                "<table>\n<tr>\n<td>Error Handling Method</td>\n<td>Technique</td>\n<td>With Error</td>\n<td>Without Error</td>\n</tr>\n<tr>\n<td>Good</td>\n<td>returns a value</td>\n<td>√</td>\n<td>√</td>\n</tr>\n<tr>\n<td>Bad</td>\n<td>returns null</td>\n<td>√</td>\n<td>fails</td>\n</tr>\n<tr>\n<td>Ugly</td>\n<td>throw a new error that captures the stack</td>\n<td>√</td>\n<td>captures stack</td>\n</tr>\n</table>"
+                "<table>\n<tr>\n<td>Error Handling Method</td>\n<td>Technique</td>\n<td>With Error</td>\n<td>Without Error</td>\n</tr>\n<tr>\n<td>Good</td>\n<td>returns a value</td>\n<td>√</td>\n<td>√</td>\n</tr>\n<tr>\n<td>Bad</td>\n<td>returns null</td>\n<td>√</td>\n<td>silent fail</td>\n</tr>\n<tr>\n<td>Ugly</td>\n<td>throw a new error that captures the stack</td>\n<td>√</td>\n<td>captures errors with stack trace</td>\n</tr>\n</table>"
             ],
             "outputs": []
         }
